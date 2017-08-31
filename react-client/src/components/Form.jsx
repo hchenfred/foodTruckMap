@@ -11,7 +11,7 @@ class Form extends Component {
   componentDidMount() {
     this.autocomplete = new google.maps.places.Autocomplete((
       document.getElementById('autocomplete')), {
-      types: ['(cities)'],
+      types: ['address'],
     });
     this.autocomplete.addListener('place_changed', this.onPlaceChanged);  
   }
@@ -41,7 +41,7 @@ class Form extends Component {
           <input onChange={this.handleInputChange} id="autocomplete" 
           className="form-control formInput" 
           type="text" 
-          placeholder="Enter a Location To Search for Stores" 
+          placeholder="Enter an address to search for food trucks" 
           required/>
           <div className="dropdown-info">Please use autocompleted address</div>
         </div>

@@ -8,21 +8,23 @@ class ListItem extends Component {
 
   handleClick(e) {
     e.preventDefault();
-    this.props.place.marker.setAnimation(google.maps.Animation.BOUNCE);
+    this.props.truck.marker.setAnimation(google.maps.Animation.BOUNCE);
     setTimeout(() => {
       this.props.place.marker.setAnimation(null);
      }, 1000);
   }
 
   render() {
+    const {applicant, address, dayshours, fooditems} = this.props.truck;
     return (
       <div onClick={this.handleClick} className="card">
         <h5 className="card-title">
-          {this.props.place.name}
+          {applicant}
         </h5>  
-        <p><i className="fa fa-star" aria-hidden="true"></i> {this.props.place.rating}</p>
-        <p>Categories: {this.props.place.types[0].split('_').join(' ')}</p>
-        <p><i className="fa fa-map-marker" aria-hidden="true"></i> {this.props.place.vicinity}</p>
+        <p><i className="fa fa-calendar" aria-hidden="true"></i> {dayshours}</p>
+        <p><i className="fa fa-cutlery" aria-hidden="true"></i> {fooditems}</p>
+        {/* <p>Categories: {this.props.place.types[0].split('_').join(' ')}</p> */}
+        <p><i className="fa fa-map-marker" aria-hidden="true"></i> {address}</p>
       </div>
     );
   }

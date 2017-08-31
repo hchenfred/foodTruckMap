@@ -10,7 +10,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currLocation: {lat: -33.867, lng: 151.195},
+      currLocation: {lat: 37.7749, lng: -122.4194},
       searchedResults: [],
       trucks: [],
       showLoader: true
@@ -24,7 +24,7 @@ class App extends Component {
     .then(response => response.json())
     .then(responseJson => {
       console.log(responseJson);
-      this.setState({ showLoader: false });
+      this.setState({ searchedResults: responseJson, showLoader: false });
     });
   }
 
@@ -42,7 +42,7 @@ class App extends Component {
       <div className="container">
         <aside className="side-container">
           <Form setCurrLocation={this.setCurrLocation}/>
-          <h1>Food Trucks Nearby</h1>
+          <h3>Food Trucks Nearby</h3>
           {loader}
           <List searchedResults={this.state.searchedResults}/>
         </aside>
