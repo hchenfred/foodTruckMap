@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form component should render as expected 1`] = `
+<div
+  className="form-container"
+>
+  <form
+    className="location-form"
+    onSubmit={[Function]}
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="form-group"
+      >
+        <input
+          className="form-control formInput"
+          id="autocomplete"
+          placeholder="Enter an address to search for food trucks"
+          required={true}
+          type="text"
+        />
+        <div
+          className="dropdown-info"
+        >
+          Please use autocompleted address
+        </div>
+      </div>
+      <div
+        className="form-group"
+      >
+        <input
+          className="btn btn-info formInput submitBtn btn-block"
+          type="submit"
+          value="Search"
+        />
+      </div>
+    </div>
+  </form>
+</div>
+`;

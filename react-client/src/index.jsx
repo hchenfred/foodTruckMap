@@ -17,15 +17,6 @@ class App extends Component {
     this.saveSearchedResults = this.saveSearchedResults.bind(this);
   }
 
-  // componentDidMount() {
-  //   fetch(`https://data.sfgov.org/resource/6a9r-agq8.json?$where=within_circle(location, 37.7749, -122.431297, 1000)&facilitytype='Truck'`)
-  //   .then(response => response.json())
-  //   .then(responseJson => {
-  //     console.log(responseJson);
-  //     this.setState({ searchedResults: responseJson, showLoader: false });
-  //   });
-  // }
-
   setCurrLocation(location) {
     this.setState({currLocation: location});
   }

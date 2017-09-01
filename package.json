@@ -22,6 +22,7 @@
     "jest": "^20.0.4",
     "react-dom": "^15.6.1",
     "react-test-renderer": "^15.6.1",
+    "sinon": "^3.2.1",
     "webpack": "^2.2.1"
   },
   "dependencies": {
@@ -40,6 +41,16 @@
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
       "\\.(css|less)$": "identity-obj-proxy"
+    },
+    "globals":{
+      "google": {
+        "autocomplete": {},
+        "maps": {
+          "Animation": {
+            "BOUNCE": true
+          }
+        }
+      }
     }
   }
 }
