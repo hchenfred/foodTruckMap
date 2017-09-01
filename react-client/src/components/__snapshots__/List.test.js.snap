@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List component should render as expected 1`] = `
+<section
+  className="list-group list"
+>
+  <ListItem
+    truck={
+      Object {
+        "address": "100 Brannan St",
+        "applicant": "Munch A Bunch",
+        "cnn": "123456",
+        "dayshours": "Mo-Fr:10AM-11AM",
+        "fooditems": "good food!",
+      }
+    }
+  />
+</section>
+`;

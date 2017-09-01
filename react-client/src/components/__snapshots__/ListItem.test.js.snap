@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListItem component should render as expected 1`] = `
+<div
+  className="card"
+  onClick={[Function]}
+>
+  <h5
+    className="card-title"
+  >
+    Munch A Bunch
+  </h5>
+  <p>
+    <i
+      aria-hidden="true"
+      className="fa fa-calendar"
+    />
+     
+    Mo-Fr:10AM-11AM
+  </p>
+  <p>
+    <i
+      aria-hidden="true"
+      className="fa fa-cutlery"
+    />
+     
+    good food!
+  </p>
+  <p>
+    <i
+      aria-hidden="true"
+      className="fa fa-map-marker"
+    />
+     
+    100 Brannan St
+  </p>
+</div>
+`;
