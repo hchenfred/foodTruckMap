@@ -10,7 +10,7 @@ class ListItem extends Component {
     e.preventDefault();
     this.props.truck.marker.setAnimation(google.maps.Animation.BOUNCE);
     setTimeout(() => {
-      this.props.place.marker.setAnimation(null);
+      this.props.truck.marker.setAnimation(null);
      }, 1000);
   }
 
@@ -23,7 +23,6 @@ class ListItem extends Component {
         </h5>  
         <p><i className="fa fa-calendar" aria-hidden="true"></i> {dayshours}</p>
         <p><i className="fa fa-cutlery" aria-hidden="true"></i> {fooditems}</p>
-        {/* <p>Categories: {this.props.place.types[0].split('_').join(' ')}</p> */}
         <p><i className="fa fa-map-marker" aria-hidden="true"></i> {address}</p>
       </div>
     );

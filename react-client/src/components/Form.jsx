@@ -9,10 +9,16 @@ class Form extends Component {
   }
 
   componentDidMount() {
+    var center = new google.maps.LatLng(37.7749, -122.431297);
+    var circle = new google.maps.Circle({
+        center: center,
+        radius: 10000
+    });
     this.autocomplete = new google.maps.places.Autocomplete((
       document.getElementById('autocomplete')), {
-      types: ['address'],
-    });
+        types: ['address'],
+      });
+    this.autocomplete.setBounds(circle.getBounds());
     this.autocomplete.addListener('place_changed', this.onPlaceChanged);  
   }
 

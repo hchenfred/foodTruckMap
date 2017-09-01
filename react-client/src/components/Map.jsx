@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
-import storeImg from '../img/Shop-icon.png';
+import foodImg from '../img/food.png';
 
 class Map extends Component {
   constructor(props) {
     super(props);
     this.map = null;
     this.infowindow = null;
-    this.callback = this.callback.bind(this);
     this.createMarker = this.createMarker.bind(this);
+    this.createAllMarkers = this.createAllMarkers.bind(this);
+    this.clearMarkers = this.clearMarkers.bind(this);
   }
 
   componentDidMount() {
@@ -17,39 +18,51 @@ class Map extends Component {
   initMap(currLocation) {
     this.map = new google.maps.Map(this.refs.map, {
       center: currLocation,
-      zoom: 16
+      zoom: 15
     });
 
     this.infowindow = new google.maps.InfoWindow();
     this.service = new google.maps.places.PlacesService(this.map);
-    // this.service.nearbySearch({
-    //   location: currLocation,
-    //   radius: 500,
-    //   type: ['store']
-    // }, this.callback);
+    this.markers = [];
+    fetch(`https://data.sfgov.org/resource/6a9r-agq8.json?$where=within_circle(location, 37.7749, -122.431297, 1000)&facilitytype='Truck'`)
+    .then(response => response.json())
+    .then(responseJson => {
+      this.createAllMarkers(responseJson);
+    });
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps !== null && (nextProps.currLocation.lat !== this.props.currLocation.lat || nextProps.currLocation.lng !== this.props.currLocation.lng)) {
+      this.clearMarkers();
       this.map.setCenter(nextProps.currLocation);
       fetch(`https://data.sfgov.org/resource/6a9r-agq8.json?$where=within_circle(location, ${nextProps.currLocation.lat}, ${nextProps.currLocation.lng}, 500)&facilitytype='Truck'`)
       .then(response => response.json())
       .then(responseJson => {
         console.log('hi', responseJson);
-        let tempResults = responseJson;
-        for (let i = 0; i < tempResults.length; i++) {
-          let marker = this.createMarker(tempResults[i]);
-          console.log(tempResults[i].applicant, tempResults[i].cnn);
-          tempResults[i].marker = marker;
-        }
-        this.props.saveSearchedResults(tempResults);
+        this.createAllMarkers(responseJson);
       });
     }
   }
 
+  clearMarkers() {
+    this.markers.forEach(marker => {
+      marker.setMap(null);
+    })
+  }
+
+  createAllMarkers(trucks) {
+    let tempResults = trucks;
+    for (let i = 0; i < tempResults.length; i++) {
+      let marker = this.createMarker(tempResults[i]);
+      this.markers.push(marker);
+      tempResults[i].marker = marker;
+    }
+    this.props.saveSearchedResults(tempResults);
+  }
+
   createMarker(place) {
    const pinIcon = new google.maps.MarkerImage(
-        storeImg,
+        foodImg,
         null, /* size is determined at runtime */
         null, /* origin is 0,0 */
         null, /* anchor is bottom center of the scaled image */

@@ -14,4 +14,5 @@
   * Google Map displays the searched results as markers
   * React component renders a list of searched results
   * When an item in the list is clicked, the corresponding marker on Google Map will bounce for 1s
+  * 
 

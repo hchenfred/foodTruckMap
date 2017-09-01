@@ -11,22 +11,20 @@ class App extends Component {
     super(props);
     this.state = {
       currLocation: {lat: 37.7749, lng: -122.4194},
-      searchedResults: [],
-      trucks: [],
-      showLoader: true
+      searchedResults: []
     }
     this.setCurrLocation = this.setCurrLocation.bind(this);
     this.saveSearchedResults = this.saveSearchedResults.bind(this);
   }
 
-  componentDidMount() {
-    fetch(`https://data.sfgov.org/resource/6a9r-agq8.json?$where=within_circle(location, 37.7749, -122.431297, 1000)&facilitytype='Truck'`)
-    .then(response => response.json())
-    .then(responseJson => {
-      console.log(responseJson);
-      this.setState({ searchedResults: responseJson, showLoader: false });
-    });
-  }
+  // componentDidMount() {
+  //   fetch(`https://data.sfgov.org/resource/6a9r-agq8.json?$where=within_circle(location, 37.7749, -122.431297, 1000)&facilitytype='Truck'`)
+  //   .then(response => response.json())
+  //   .then(responseJson => {
+  //     console.log(responseJson);
+  //     this.setState({ searchedResults: responseJson, showLoader: false });
+  //   });
+  // }
 
   setCurrLocation(location) {
     this.setState({currLocation: location});
@@ -37,13 +35,12 @@ class App extends Component {
   }
 
   render() {
-    const loader = this.state.showLoader ? (<div className='loader'></div>) : null;
+    // const loader = this.state.showLoader ? (<div className='loader'></div>) : null;
     return (
       <div className="container">
         <aside className="side-container">
           <Form setCurrLocation={this.setCurrLocation}/>
           <h3>Food Trucks Nearby</h3>
-          {loader}
           <List searchedResults={this.state.searchedResults}/>
         </aside>
         <article className="map-container">
