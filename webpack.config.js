@@ -8,6 +8,9 @@ module.exports = {
     filename: 'bundle.js',
     path: DIST_DIR
   },
+  resolve: {
+    extensions: ['.js', '.json', '.css', '.jsx'],
+  },
   module : {
     loaders : [
       {

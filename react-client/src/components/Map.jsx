@@ -90,7 +90,7 @@ class Map extends Component {
       infowindow.open(this.map, marker);
       setTimeout(() => { infowindow.close(); }, '2000');
     });
-
+    
     return marker;
   }
 
