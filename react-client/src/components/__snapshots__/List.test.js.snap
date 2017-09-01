@@ -17,9 +17,3 @@ exports[`List component should render as expected 1`] = `
   />
 </section>
 `;
-
-exports[`List component should render as expected 2`] = `
-<section
-  className="list-group list"
-/>
-`;
