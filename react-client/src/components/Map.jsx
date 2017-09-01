@@ -76,13 +76,19 @@ class Map extends Component {
     });
 
     const infowindow = new google.maps.InfoWindow({
-          content: `<div>${place.applicant}</div>
-          <div>${place.address}</div>`,
+          content: `<div class="card">
+          <h5 className="card-title">
+            ${place.applicant}
+          </h5>  
+          <p><i class="fa fa-calendar" aria-hidden="true"></i> ${place.dayshours}</p>
+          <p><i class="fa fa-cutlery" aria-hidden="true"></i> ${place.fooditems}</p>
+          <p><i class="fa fa-map-marker" aria-hidden="true"></i> ${place.address}</p>
+        </div>`,
     });
 
     google.maps.event.addListener(marker, 'click', () => {
       infowindow.open(this.map, marker);
-      setTimeout(() => { infowindow.close(); }, '1000');
+      setTimeout(() => { infowindow.close(); }, '2000');
     });
 
     return marker;
